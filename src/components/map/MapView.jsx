@@ -42,6 +42,7 @@ const createCustomIcon = (isSelected = false) => {
 const MapView = ({ properties, selectedProperty, onPropertySelect }) => {
   // Berlin coordinates
   const berlinCenter = [52.5200, 13.4050];
+  const initialZoom = 14; // Try values between 12-15
   
   // Custom tile layer for dark futuristic theme
   const customTileLayer = `
@@ -52,7 +53,7 @@ const MapView = ({ properties, selectedProperty, onPropertySelect }) => {
     <div className="flex-1 relative" style={{ backgroundColor: colors.primary }}>
       <MapContainer
         center={berlinCenter}
-        zoom={11}
+        zoom={initialZoom}
         style={{ 
       height: '100%', 
       width: '100%', 
