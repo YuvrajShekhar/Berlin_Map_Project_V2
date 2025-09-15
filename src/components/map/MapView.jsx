@@ -53,7 +53,13 @@ const MapView = ({ properties, selectedProperty, onPropertySelect }) => {
       <MapContainer
         center={berlinCenter}
         zoom={11}
-        style={{ height: '100%', width: '100%', background: colors.primary }}
+        style={{ 
+      height: '100%', 
+      width: '100%', 
+      background: colors.primary,
+      position: 'relative',
+      zIndex: 10
+    }}
         zoomControl={true}
         scrollWheelZoom={true}
         doubleClickZoom={true}

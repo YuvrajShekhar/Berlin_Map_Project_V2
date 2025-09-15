@@ -24,26 +24,28 @@ function App() {
 
   return (
     <div className="h-screen flex flex-col" style={{ backgroundColor: colors.primary }}>
-      {/* Header */}
+      {/* Header - Only Navbar now */}
       <Navbar 
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
 
-      {/* Search Bar */}
-      <SearchBar />
-
-      {/* Main Content Area */}
+      {/* Main Content Area - Map takes full remaining height */}
       <div className="flex-1 flex relative overflow-hidden">
-        {/* Map */}
-        <MapView 
-          properties={properties}
-          selectedProperty={selectedProperty}
-          onPropertySelect={handlePropertySelect}
-        />
+          {/* Map - Full width and height */}
+          <MapView 
+            properties={properties}
+            selectedProperty={selectedProperty}
+            onPropertySelect={handlePropertySelect}
+          />
 
-        {/* Property Sidebar */}
-        <PropertySidebar 
+        {/* Floating Search Bar - Overlays the map with higher z-index */}
+          <div className="absolute top-4 left-0 right-0 z-30">
+            <SearchBar />
+          </div>
+
+          {/* Property Sidebar */}
+          <PropertySidebar 
             isOpen={isSidebarOpen}
             setIsOpen={setIsSidebarOpen}
             property={selectedProperty}
@@ -54,7 +56,10 @@ function App() {
           <button
             onClick={() => setIsSidebarOpen(true)}
             className="md:hidden fixed bottom-4 right-4 p-3 rounded-full shadow-lg z-20"
-            style={{ backgroundColor: colors.accent }}
+            style={{ 
+              backgroundColor: colors.accent,
+              boxShadow: '0 10px 30px rgba(110, 172, 218, 0.4)',
+            }}
           >
             <MapPin className="w-6 h-6 text-white" />
           </button>
